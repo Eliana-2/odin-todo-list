@@ -1,4 +1,4 @@
-function todoFactory(title, description, dueDate, priority, isComplete, notes) {
+function TodoFactory(title, description, dueDate, priority, isComplete, notes) {
   function getTitle() {return title};
   function getDescription() {return description};
   function getDueDate() {return dueDate};
@@ -16,4 +16,4 @@ function todoFactory(title, description, dueDate, priority, isComplete, notes) {
           setTitle, setDescription, setDueDate, setPriority, setIsComplete, setNotes};
 }
 
-export {todoFactory}
+export {TodoFactory}
