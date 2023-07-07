@@ -55,11 +55,19 @@ function TodoFactoryTests() {
 
 function ProjectFactoryTests() {
   test('ProjectFactory: Get todos', () => {
-    expect(ProjectFactory().getTodos()).toHaveLength(0) && 
-    expectTypeOf(ProjectFactory().getTodos()).toBeArray();
+    expect(ProjectFactory('Project 1').getTodos()).toHaveLength(0) && 
+    expectTypeOf(ProjectFactory('Project 1').getTodos()).toBeArray();
+  });
+  test('ProjectFactory: Get project name', () => {
+    expect(ProjectFactory('Project 1').getProjectName()).toBe('Project 1');
+  });
+  test('ProjectFactory: Set project name', () => {
+    const myProject = ProjectFactory('Project 1');
+    myProject.setProjectName('Project 2');
+    expect(myProject.getProjectName()).toBe('Project 2');
   });
   test('ProjectFactory: Add todo', () => {
-    const myProject = ProjectFactory();
+    const myProject = ProjectFactory('Project 1');
     myProject.addTodo('Clean', 'dust and vacuum', '7/7/2023', 1, false, '');
     expect(myProject.getTodos().findIndex((currentTodo) => {
       return currentTodo.getTitle() === 'Clean' && currentTodo.getDescription() === 'dust and vacuum' &&
@@ -68,7 +76,7 @@ function ProjectFactoryTests() {
     })).not.toBe(-1);
   })
   test('ProjectFactory: Remove todo', () => {
-    const myProject = ProjectFactory();
+    const myProject = ProjectFactory('Project 1');
     myProject.addTodo('Clean', 'dust and vacuum', '7/7/2023', 1, false, '');
     myProject.addTodo('Clean 2', 'dust and vacuum', '7/7/2023', 1, false, '');
     myProject.removeTodo(0);
