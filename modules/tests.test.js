@@ -1,6 +1,7 @@
 import {test, expect, expectTypeOf} from "vitest";
 import {TodoFactory} from "./TodoFactory.js";
 import {ProjectFactory} from "./ProjectFactory.js";
+import {getProjects, addProject, removeProject} from "./Projects.js";
 
 function TodoFactoryTests() {
   test('TodoFactory: Get title', () => {
@@ -84,5 +85,24 @@ function ProjectFactoryTests() {
   })
 }
 
+function ProjectsTests() {
+  test('Projects: get projects', () => {
+    expect(getProjects()[0].getProjectName()).toBe('Default');
+  });
+  test('Projects: add project', () => {
+    addProject('Project 2');
+    expect(getProjects().findIndex((currentProject) => {
+      return currentProject.getProjectName() === 'Project 2'
+    })).not.toBe(-1);
+  });
+  test('Projects: remove project', () => {
+    removeProject('Project 2');
+    expect(getProjects().findIndex((currentProject) => {
+      return currentProject.getProjectName() === 'Project 2'
+    })).toBe(-1);
+  })
+}
+
 TodoFactoryTests();
 ProjectFactoryTests();
+ProjectsTests();
