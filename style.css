@@ -80,7 +80,7 @@ ul, ol {
   transform: scale(1.1, 1.1);
 }
 
-.new-project:hover {
+.new-project:hover, .form-button:hover {
   transform: scale(1.025, 1.025);
 }
 
@@ -91,4 +91,63 @@ ul, ol {
   text-align: center;
   margin-top: auto;
   padding: 0.5rem;
+}
+
+.form {
+  background-color: rgb(230, 195, 221);
+  border: 1px solid black;
+  border-radius: 0.125rem;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}  
+
+.form-heading {
+  font-size: 1.75rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.form-label {
+  font-size: 1.25rem;
+}
+
+.form-input {
+  font-size: 1.2rem;
+}
+
+.buttons {
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.form-button {
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: 0.35rem;
+  border: none;
+  border: 1px solid black;
+}
+
+.submit {
+  background-color: white;
+}
+
+.cancel {
+  background-color: rgb(231, 96, 96);
+}
+
+.form-button:hover {
+  opacity: 75%;
 }
