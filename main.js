@@ -4,4 +4,4 @@ import{displayProjects} from "./modules/DOM_Projects.js"
 
 
 addProject('Project 1');
-displayProjects(getProjects());
+displayProjects();
