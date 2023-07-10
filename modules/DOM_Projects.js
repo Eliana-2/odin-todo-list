@@ -1,5 +1,6 @@
 function displayProjects(projects) {
   const projectsNav = document.querySelector('.projects-nav');
+  const newProject = document.querySelector('.new-project');
   projects.forEach((project) => {
     const navElement = document.createElement('li');
     navElement.classList.add('nav-element');
@@ -24,7 +25,7 @@ function displayProjects(projects) {
     deleteIcon.classList.add('nav-icon', 'delete');
     navElement.appendChild(deleteIcon);
 
-    projectsNav.appendChild(navElement);
+    projectsNav.insertBefore(navElement, newProject);
   });
 }
 

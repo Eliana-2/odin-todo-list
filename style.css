@@ -80,6 +80,10 @@ ul, ol {
   transform: scale(1.1, 1.1);
 }
 
+.new-project:hover {
+  transform: scale(1.025, 1.025);
+}
+
 .footer {
   background-color: rgb(179, 225, 240);
   color: white;
