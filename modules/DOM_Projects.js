@@ -1,4 +1,7 @@
-import {getProjects, removeProject} from "./Projects.js";
+import {getProjects, addProject, removeProject} from "./Projects.js";
+
+let formType = 'Add';
+let formCurrentProject = '';
 
 function displayProjects() {
   const projectsNav = document.querySelector('.projects-nav');
@@ -22,7 +25,9 @@ function displayProjects() {
     editIcon.setAttribute('src', '../icons/file-edit-outline.svg');
     editIcon.classList.add('nav-icon', 'edit');
     editIcon.addEventListener('click', (e) => {
-      showProjectForm('Edit');
+      formType = 'Edit';
+      formCurrentProject = project;
+      showProjectForm();
     })
     navElement.appendChild(editIcon);
 
@@ -30,7 +35,7 @@ function displayProjects() {
     deleteIcon.setAttribute('src', '../icons/trash-can-outline.svg');
     deleteIcon.classList.add('nav-icon', 'delete');
     deleteIcon.addEventListener('click', (e) => {
-     removeProjectNav(e.target.parentNode.textContent);
+     removeProjectNav(project.getProjectName());
     })
     navElement.appendChild(deleteIcon);
 
@@ -51,20 +56,46 @@ function displayProjects() {
   addNewProject.appendChild(navText);
   
   addNewProject.addEventListener('click', (e) => {
-    showProjectForm('Add');
+    formType = 'Add';
+    formCurrentProject = '';
+    showProjectForm();
   })
   projectsNav.appendChild(addNewProject);
 }
 
-function showProjectForm(formType) {
-  document.querySelector('.cover').style.visibility = 'visible';
+function showProjectForm() {
   document.querySelector('.project-form .form-heading').textContent = `${formType} Project`;
+  if(formType === 'Edit') {
+    document.querySelector('.project-form .form-input').value = formCurrentProject.getProjectName();
+  }
+  document.querySelector('.project-form .submit').textContent = `${formType}`;
+  document.querySelector('.cover').style.visibility = 'visible';
   document.querySelector('.project-form').style.visibility = 'visible';
+}
+
+function hideProjectForm() {
+  document.querySelector('.project-form').style.visibility = 'hidden';
+  displayProjects();
+  document.querySelector('.cover').style.visibility = 'hidden';
 }
 
 function removeProjectNav(projectName) {
   removeProject(projectName);
   displayProjects(getProjects());
 }
+
+function submitProjectForm() {
+  const newProjectName = document.querySelector('#project-title').value;
+  if(formType === 'Add') {
+    addProject(newProjectName);
+  }
+  else {
+    formCurrentProject.setProjectName(newProjectName);
+  }
+  hideProjectForm();
+}
+
+document.querySelector('.project-form .cancel').addEventListener('click', hideProjectForm);
+document.querySelector('.project-form .submit').addEventListener('click', submitProjectForm)
 
 export {displayProjects}
