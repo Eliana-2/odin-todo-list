@@ -12,14 +12,18 @@ ul, ol {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 820px;
 }
 
 .header {
   background-color: rgb(230, 195, 221);
-  text-align: center;
   font-weight: bold;
   padding: 2rem;
   box-shadow: inset 0rem -0.03125rem 0.0675rem rgb(42, 42, 43);
+}
+
+.header-heading {
+  font-size: 2.5rem;
 }
 
 .content {
@@ -39,7 +43,7 @@ ul, ol {
   gap: 1.25rem;
 }
 
-.nav-element {
+.nav-element, .nav-heading {
   display: flex;
   align-items: center;
   border-radius: 0.5rem;
@@ -53,6 +57,7 @@ ul, ol {
 
 .nav-text {
   font-size: 2rem;
+  white-space: nowrap;
 }
 
 .nav-icon {
@@ -72,7 +77,7 @@ ul, ol {
   width: 1.4rem;
 }
 
-.edit {
+.projects-nav .edit {
   margin-left: auto;
 }
 
@@ -82,6 +87,86 @@ ul, ol {
 
 .new-project:hover, .form-button:hover {
   transform: scale(1.025, 1.025);
+}
+
+.main {
+  padding: 2rem
+}
+
+.main-container {
+  max-width: 700px;
+  margin: 0 auto;
+  
+}
+
+.main-heading {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.todos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.todos-top {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(230, 195, 221);
+}
+
+.todos-heading {
+  font-size: 1.6rem;
+  white-space: nowrap;
+}
+
+.todos-icon {
+  width: 1.6rem;
+}
+
+.todos-list {
+  padding: 0rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.todo {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  /*border: 1px solid black;*/
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.todo:hover {
+  background-color:rgb(230, 195, 221);
+  opacity: 50%;
+}
+
+.todo-check {
+  width: 1.35rem;
+  height: 1.35rem;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.todo-title, .todo-date {
+  font-size: 1.35rem;
+  white-space: nowrap;
+}
+
+.todo-date {
+  margin-left: auto;
+}
+
+.todo-icon {
+  width: 1.45rem;
 }
 
 .footer {

@@ -1,4 +1,5 @@
 import {getProjects, addProject, removeProject} from "./Projects.js";
+import { displayProjectTodos } from "./DOM_Todos.js";
 
 let formType = 'Add';
 let formCurrentProject = '';
@@ -39,6 +40,9 @@ function displayProjects() {
     })
     navElement.appendChild(deleteIcon);
 
+    navElement.addEventListener('click', () => {
+      displayProjectTodos(project);
+    })
     projectsNav.appendChild(navElement);
   });
 
