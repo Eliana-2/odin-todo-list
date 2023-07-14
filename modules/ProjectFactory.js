@@ -10,7 +10,10 @@ function ProjectFactory(projectName) {
   function addTodo(title, description, dueDate, priority, isComplete, notes) {
     todos.push(TodoFactory(title, description, dueDate, priority, isComplete, notes));
   }
-  function removeTodo(todoIndex) {
+  function removeTodo(todo) {
+    let todoIndex = getTodos().findIndex((currentTodo) => {
+      return currentTodo.getTitle() === todo.getTitle();
+    })
     todos.splice(todoIndex, 1);
   }
 

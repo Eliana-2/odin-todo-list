@@ -14,10 +14,13 @@ function makeDiv(parent, classesToAdd, textContent='') {
   parent.appendChild(div);
 }
 
-function makeIcon(parent, classesToAdd, src, eventListener='') {
+function makeIcon(parent, classesToAdd, src, project, todo, eventListener) {
   const icon = document.createElement('img');
   icon.setAttribute('src', src);
   icon.classList.add(...classesToAdd);
+  icon.addEventListener('click', () => {
+    eventListener(project, todo);
+  })
   parent.appendChild(icon);
 }
 
@@ -31,10 +34,15 @@ function displayProjectTodos(project) {
     makeDiv(todoElement, ['todo-title'], todo.getTitle());
     makeDiv(todoElement, ['todo-date'], todo.getDueDate());
     makeIcon(todoElement, ['todo-icon', 'edit'], '../icons/square-edit-outline.svg');
-    makeIcon(todoElement, ['todo-icon', 'delete'], '../icons/trash-can-outline.svg');
+    makeIcon(todoElement, ['todo-icon', 'delete'], '../icons/trash-can-outline.svg', project, todo, removeTodoElement);
 
     todoList.appendChild(todoElement);
   })
+}
+
+function removeTodoElement(project, todo) {
+  project.removeTodo(todo);
+  displayProjectTodos(project);
 }
 
 export {displayProjectTodos}
