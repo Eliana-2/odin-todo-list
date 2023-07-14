@@ -57,6 +57,38 @@
             </div>
           </div>
         </div>
+        <form action="" method="" class="form todo-form">
+          <h2 class="form-heading"></h2>
+          <div class="form-container">
+            <label for="todo-title" class="form-label">Title</label>
+            <input class="form-input" type="text" id="todo-title" name="todo-title">
+          </div>
+          <div class="form-container">
+            <label for="todo-description" class="form-label">Description</label>
+            <input class="form-input" type="text" id="todo-description" name="todo-description">
+          </div>
+          <div class="form-container">
+            <label for="todo-date" class="form-label">Date</label>
+            <input class="form-input" type="date" id="todo-date" name="todo-date">
+          </div>
+          <div class="form-container">
+            <label for="todo-priority" class="form-label">Priority</label>
+            <select class="form-input" id="todo-priority" name="todo-priority">
+              <option value="">Select Priority</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+          <div class="form-container">
+            <label for="todo-notes" class="form-label">Notes</label>
+            <textarea class="form-input" rows='5' cols = '10' id="todo-notes" name="todo-notes"></textarea>
+          </div>
+          <div class="form-container buttons">
+            <button class="form-button cancel" type="button">Cancel</button>
+            <button class="form-button submit" type="button"></button>
+          </div>
+        </form>
       </div>
       <div class="footer">
         <p class="footer-text">By Ellie</p>
