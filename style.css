@@ -85,7 +85,7 @@ ul, ol {
   transform: scale(1.1, 1.1);
 }
 
-.new-project:hover, .form-button:hover {
+.new-project:hover, .form-button:hover, .todos-icon:hover  {
   transform: scale(1.025, 1.025);
 }
 
@@ -123,7 +123,7 @@ ul, ol {
 }
 
 .todos-icon {
-  width: 1.6rem;
+  width: 1.7rem;
 }
 
 .todos-list {
