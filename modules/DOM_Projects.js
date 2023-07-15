@@ -69,9 +69,7 @@ function displayProjects() {
 
 function showProjectForm() {
   document.querySelector('.project-form .form-heading').textContent = `${formType} Project`;
-  if(formType === 'Edit') {
-    document.querySelector('.project-form .form-input').value = formCurrentProject.getProjectName();
-  }
+  document.querySelector('.project-form .form-input').value = (formType === 'Edit') ? formCurrentProject.getProjectName() : '';
   document.querySelector('.project-form .submit').textContent = `${formType}`;
   document.querySelector('.cover').style.visibility = 'visible';
   document.querySelector('.project-form').style.visibility = 'visible';

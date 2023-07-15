@@ -30,7 +30,7 @@ function makeIcon(parent, classesToAdd, src, project, todo, eventListener) {
 }
 
 function showTodoForm(todo='') {
-  document.querySelector('.todo-form .form-heading').textContent = `${formType} Project`;
+  document.querySelector('.todo-form .form-heading').textContent = `${formType} To-Do`;
   if(formType === 'Edit') {
     document.querySelector('#todo-title').value = todo.getTitle();
     document.querySelector('#todo-description').value = todo.getDescription();
@@ -41,6 +41,11 @@ function showTodoForm(todo='') {
   document.querySelector('.todo-form .submit').textContent = `${formType}`;
   document.querySelector('.cover').style.visibility = 'visible';
   document.querySelector('.todo-form').style.visibility = 'visible';
+}
+
+function hideTodoForm() {
+  document.querySelector('.todo-form').style.visibility = 'hidden';
+  document.querySelector('.cover').style.visibility = 'hidden';
 }
 
 function addTodoElement() {
