@@ -1,5 +1,5 @@
 import {getProjects, addProject, removeProject} from "./Projects.js";
-import { displayProjectTodos } from "./DOM_Todos.js";
+import { displayProjectTodos, updateProjectSelect } from "./DOM_Todos.js";
 
 let formType = 'Add';
 let formCurrentProject = '';
@@ -44,6 +44,7 @@ function displayProjects() {
       displayProjectTodos(project);
     })
     projectsNav.appendChild(navElement);
+    updateProjectSelect(project);
   });
 
   const addNewProject = document.createElement('li');
@@ -63,7 +64,8 @@ function displayProjects() {
     formType = 'Add';
     formCurrentProject = '';
     showProjectForm();
-  })
+  });
+
   projectsNav.appendChild(addNewProject);
 }
 

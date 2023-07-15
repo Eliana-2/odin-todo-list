@@ -11,9 +11,18 @@ function TodoFactory(title, description, dueDate, priority, isComplete, notes) {
   function setPriority(newPriority) {priority = newPriority};
   function setIsComplete(newIsComplete) {isComplete = newIsComplete};
   function setNotes(newNotes) {notes = newNotes};
+  function editTodo(newTitle, newDescription, newDueDate, newPriority, newIsComplete, newNotes) {
+    setTitle(newTitle);
+    setDescription(newDescription);
+    setDueDate(newDueDate);
+    setPriority(newPriority);
+    setIsComplete(newIsComplete);
+    setNotes(newNotes);
+  }
 
   return {getTitle, getDescription, getDueDate, getPriority, getIsComplete, getNotes,
-          setTitle, setDescription, setDueDate, setPriority, setIsComplete, setNotes};
+          setTitle, setDescription, setDueDate, setPriority, setIsComplete, setNotes,
+          editTodo};
 }
 
 export {TodoFactory}
