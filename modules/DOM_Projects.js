@@ -1,5 +1,5 @@
 import {getProjects, addProject, removeProject} from "./Projects.js";
-import { displayProjectTodos, updateProjectSelect } from "./DOM_Todos.js";
+import { displayProjectTodos, updateProjectSelect, resetTodos} from "./DOM_Todos.js";
 
 let formType = 'Add';
 let formCurrentProject = '';
@@ -20,7 +20,11 @@ function displayProjects() {
     const navText = document.createElement('div');
     navText.classList.add('nav-text');
     navText.textContent = project.getProjectName();
+    navText.addEventListener('click', () => {
+      displayProjectTodos(project);
+    });
     navElement.appendChild(navText);
+  
 
     const editIcon = document.createElement('img');
     editIcon.setAttribute('src', '../icons/file-edit-outline.svg');
@@ -40,9 +44,6 @@ function displayProjects() {
     })
     navElement.appendChild(deleteIcon);
 
-    navElement.addEventListener('click', () => {
-      displayProjectTodos(project);
-    })
     projectsNav.appendChild(navElement);
     updateProjectSelect(project);
   });
@@ -85,6 +86,7 @@ function hideProjectForm() {
 
 function removeProjectNav(projectName) {
   removeProject(projectName);
+  resetTodos(projectName);
   displayProjects(getProjects());
 }
 

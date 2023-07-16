@@ -212,6 +212,12 @@ function submitTodoForm() {
   hideTodoForm();
 }
 
+function resetTodos(projectName) {
+  if(projectName === activeTab) {
+    displayImportantTodos();
+  }
+}
+
 document.querySelector('.todo-form .cancel').addEventListener('click', hideTodoForm);
 document.querySelector('.todo-form .submit').addEventListener('click', submitTodoForm);
 
@@ -219,4 +225,4 @@ document.querySelector('#today').addEventListener('click', displayTodayTodos);
 document.querySelector('#upcoming').addEventListener('click', displayUpcomingTodos);
 document.querySelector('#important').addEventListener('click', displayImportantTodos);
 
-export {displayProjectTodos, updateProjectSelect}
+export {displayProjectTodos, updateProjectSelect, resetTodos}
