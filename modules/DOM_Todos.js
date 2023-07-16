@@ -1,4 +1,4 @@
-import {getProject} from './Projects.js';
+import {getProject, getProjects} from './Projects.js';
 
 const todoList = document.querySelector('.todos-list');
 let formType = 'Add';
@@ -76,7 +76,7 @@ function enableFormSelect() {
 
 function hideTodoForm() {
   document.querySelector('.todo-form').style.visibility = 'hidden';
-  displayProjectTodos(getProject(activeTab));
+  displayActiveTodos();
   document.querySelector('.cover').style.visibility = 'hidden';
 }
 
@@ -98,20 +98,86 @@ function formatDate(dueDate) {
   return yearMonthDay[1] + '/' + yearMonthDay[2] + '/' + yearMonthDay[0];
 }
 
+function displayTodo(todo, project) {
+  const todoElement = document.createElement('li');
+  todoElement.classList.add('todo');
+
+  makeDiv(todoElement, ['todo-check']);
+  makeDiv(todoElement, ['todo-title'], todo.getTitle());
+  makeDiv(todoElement, ['todo-date'], formatDate(todo.getDueDate()));
+  makeIcon(todoElement, ['todo-icon', 'edit'], '../icons/square-edit-outline.svg', project, todo, editTodoElement);
+  makeIcon(todoElement, ['todo-icon', 'delete'], '../icons/trash-can-outline.svg', project, todo, removeTodoElement);
+
+  todoList.appendChild(todoElement);
+}
+
 function displayProjectTodos(project) {
   setupMainContainer(project.getProjectName(), '../icons/text-box-check-outline.svg',true);
   project.getTodos().forEach((todo) => {
-    const todoElement = document.createElement('li');
-    todoElement.classList.add('todo');
-
-    makeDiv(todoElement, ['todo-check']);
-    makeDiv(todoElement, ['todo-title'], todo.getTitle());
-    makeDiv(todoElement, ['todo-date'], formatDate(todo.getDueDate()));
-    makeIcon(todoElement, ['todo-icon', 'edit'], '../icons/square-edit-outline.svg', project, todo, editTodoElement);
-    makeIcon(todoElement, ['todo-icon', 'delete'], '../icons/trash-can-outline.svg', project, todo, removeTodoElement);
-
-    todoList.appendChild(todoElement);
+    displayTodo(todo, project);
   })
+}
+
+function formatCurrentDate() {
+  const date = new Date();
+  let day = date.getDate().toString().padStart(2, '0');
+  let month = (date.getMonth() + 1).toString().padStart(2, '0');
+  let year = date.getFullYear();
+  return year + '-' + month + '-' + day;
+}
+
+function isUpcoming(dueDate) {
+  const dueDateDay = dueDate.split('-')[2];
+  const dueDateMonth = dueDate.split('-')[1];
+  const dueDateYear = dueDate.split('-')[0];
+  const dueDateObj = new Date(`${dueDateYear}, ${dueDateMonth}, ${dueDateDay}`);
+  const MILLISECONDS_IN_WEEK = 604800000;
+  const currentDate = new Date();
+  const currentDateStart = new Date(currentDate.getFullYear() + ',' + (currentDate.getMonth() + 1) + ',' + currentDate.getDate());
+  return dueDateObj.valueOf() - currentDateStart.valueOf() >= 0 && dueDateObj.valueOf() - currentDateStart.valueOf() <= MILLISECONDS_IN_WEEK;
+}
+
+function displayTodayTodos() {
+  setupMainContainer('Today', '../icons/calendar-today.svg', false);
+  getProjects().forEach((project) => {
+    project.getTodos().filter(todo => todo.getDueDate() === formatCurrentDate()).forEach((todo) => {
+      displayTodo(todo, project);
+    })
+  })
+}
+
+function displayUpcomingTodos() {
+  setupMainContainer('Upcoming', '../icons/calendar-week.svg', false);
+  getProjects().forEach((project) => {
+    project.getTodos().filter(todo => isUpcoming(todo.getDueDate())).forEach((todo) => {
+      displayTodo(todo, project);
+    });
+  })
+}
+
+function displayImportantTodos() {
+  setupMainContainer('Important', '../icons/calendar-star.svg', false);
+  getProjects().forEach((project) => {
+    project.getTodos().filter(todo => todo.getPriority() === 'High').forEach((todo) => {
+      displayTodo(todo,project);
+    });
+  })
+}
+
+function displayActiveTodos() {
+  switch(activeTab) {
+    case 'Today':
+      displayTodayTodos();
+      break;
+    case 'Upcoming':
+      displayUpcomingTodos();
+      break;
+    case 'Important':
+      displayImportantTodos();
+      break;
+    default:
+      displayProjectTodos(getProject(activeTab));
+  }
 }
 
 function updateProjectSelect(project)
@@ -148,5 +214,9 @@ function submitTodoForm() {
 
 document.querySelector('.todo-form .cancel').addEventListener('click', hideTodoForm);
 document.querySelector('.todo-form .submit').addEventListener('click', submitTodoForm);
+
+document.querySelector('#today').addEventListener('click', displayTodayTodos);
+document.querySelector('#upcoming').addEventListener('click', displayUpcomingTodos);
+document.querySelector('#important').addEventListener('click', displayImportantTodos);
 
 export {displayProjectTodos, updateProjectSelect}
