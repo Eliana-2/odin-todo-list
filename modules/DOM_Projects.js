@@ -20,9 +20,6 @@ function displayProjects() {
     const navText = document.createElement('div');
     navText.classList.add('nav-text');
     navText.textContent = project.getProjectName();
-    navText.addEventListener('click', () => {
-      displayProjectTodos(project);
-    });
     navElement.appendChild(navText);
   
 
@@ -33,6 +30,7 @@ function displayProjects() {
       formType = 'Edit';
       formCurrentProject = project;
       showProjectForm();
+      e.stopPropagation();
     })
     navElement.appendChild(editIcon);
 
@@ -41,9 +39,13 @@ function displayProjects() {
     deleteIcon.classList.add('nav-icon', 'delete');
     deleteIcon.addEventListener('click', (e) => {
      removeProjectNav(project.getProjectName());
+     e.stopPropagation();
     })
     navElement.appendChild(deleteIcon);
 
+    navElement.addEventListener('click', () => {
+      displayProjectTodos(project);
+    });
     projectsNav.appendChild(navElement);
     updateProjectSelect(project);
   });

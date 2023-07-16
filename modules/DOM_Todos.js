@@ -192,7 +192,7 @@ function updateProjectSelect(project)
 
 function removeTodoElement(project, todo) {
   project.removeTodo(todo);
-  displayProjectTodos(project);
+  displayActiveTodos();
 }
 
 function submitTodoForm() {
