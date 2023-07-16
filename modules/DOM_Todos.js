@@ -7,10 +7,11 @@ let formCurrentTodo = '';
 let activeTab = '';
 
 
-function setupMainContainer(headingText, isProject) {
+function setupMainContainer(headingText, iconSrc, isProject) {
   activeTab = headingText;
   todoList.innerHTML = '';
   document.querySelector('.main-heading').textContent = headingText;
+  document.querySelector('.main-icon').src = iconSrc;
   document.querySelector('.todos-heading').textContent = 'To-Dos';
   document.querySelector('.todos-icon').setAttribute('src', '../icons/plus.svg');
   document.querySelector('.todos-icon').addEventListener('click', () => {
@@ -98,7 +99,7 @@ function formatDate(dueDate) {
 }
 
 function displayProjectTodos(project) {
-  setupMainContainer(project.getProjectName(), true);
+  setupMainContainer(project.getProjectName(), '../icons/text-box-check-outline.svg',true);
   project.getTodos().forEach((todo) => {
     const todoElement = document.createElement('li');
     todoElement.classList.add('todo');
