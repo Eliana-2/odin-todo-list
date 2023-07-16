@@ -6,9 +6,21 @@ let formCurrentProjectName = '';
 let formCurrentTodo = '';
 let activeTab = '';
 
+function setActiveTab(tabName) {
+  activeTab = tabName;
+  const navTexts = document.querySelectorAll('.nav-text');
+  navTexts.forEach((navText) => {
+    if(navText.textContent === tabName) {
+      navText.parentNode.classList.add('nav-element_highlight');
+    }
+    else {
+      navText.parentNode.classList.remove('nav-element_highlight');
+    }
+  })
+}
 
 function setupMainContainer(headingText, iconSrc, isProject) {
-  activeTab = headingText;
+  setActiveTab(headingText);
   todoList.innerHTML = '';
   document.querySelector('.main-heading').textContent = headingText;
   document.querySelector('.main-icon').src = iconSrc;

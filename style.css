@@ -51,7 +51,7 @@ ul, ol {
   padding: 0px 0.5rem;
 }
 
-.nav-element:hover {
+.nav-element:hover, .nav-element_highlight {
  background-color:rgb(243, 182, 220);
 }
 
