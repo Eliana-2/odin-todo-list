@@ -81,8 +81,20 @@ ul, ol {
   margin-left: auto;
 }
 
-.edit:hover, .delete:hover {
+.edit:hover, .delete:hover, .check:hover {
   transform: scale(1.1, 1.1);
+}
+
+.check_high {
+  filter: invert(6%) sepia(98%) saturate(6440%) hue-rotate(7deg) brightness(97%) contrast(109%);
+}
+
+.check_medium {
+  filter: invert(78%) sepia(64%) saturate(978%) hue-rotate(341deg) brightness(89%) contrast(92%);
+}
+
+.check_low {
+  filter: invert(23%) sepia(52%) saturate(2288%) hue-rotate(93deg) brightness(93%) contrast(101%);
 }
 
 .new-project:hover, .form-button:hover, .todos-icon:hover  {

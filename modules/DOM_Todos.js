@@ -125,7 +125,9 @@ function displayTodo(todo, project) {
   todoElement.classList.add('todo');
 
   const checkIconSrc = (todo.getIsComplete() === false) ? '../icons/circle-outline.svg' : '../icons/check-circle-outline.svg';
-  makeIcon(todoElement, ['todo-icon', 'check'], checkIconSrc, project, todo, checkTodoElement);
+  const checkIconClass = (todo.getPriority() === 'High') ? 'check_high' :
+  (todo.getPriority() === 'Medium') ? 'check_medium' : 'check_low';
+  makeIcon(todoElement, ['todo-icon', 'check', checkIconClass], checkIconSrc, project, todo, checkTodoElement);
   makeDiv(todoElement, ['todo-title'], todo.getTitle());
   makeDiv(todoElement, ['todo-date'], formatDate(todo.getDueDate()));
   makeIcon(todoElement, ['todo-icon', 'edit'], '../icons/square-edit-outline.svg', project, todo, editTodoElement);
