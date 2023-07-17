@@ -199,6 +199,17 @@ function updateProjectSelect(project)
   option.value = project.getProjectName();
   option.text = project.getProjectName();
   projectSelect.appendChild(option);
+}
+
+function clearProjectSelect() {
+  let options = document.querySelector('#todo-project').children;
+  console.log(options);
+  for(let i = options.length -1; i > 0; i--) {
+    console.log(options[i]);
+    options[i].remove();
+  }
+  options = document.querySelector('#todo-project').children;
+  console.log(options);
 
 }
 
@@ -237,4 +248,4 @@ document.querySelector('#today').addEventListener('click', displayTodayTodos);
 document.querySelector('#upcoming').addEventListener('click', displayUpcomingTodos);
 document.querySelector('#important').addEventListener('click', displayImportantTodos);
 
-export {displayProjectTodos, updateProjectSelect, resetTodos}
+export {displayProjectTodos, updateProjectSelect, clearProjectSelect, resetTodos, setActiveTab, displayActiveTodos}

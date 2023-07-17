@@ -1,5 +1,5 @@
 import {getProjects, addProject, removeProject} from "./Projects.js";
-import { displayProjectTodos, updateProjectSelect, resetTodos} from "./DOM_Todos.js";
+import { displayProjectTodos, updateProjectSelect, clearProjectSelect, resetTodos, setActiveTab, displayActiveTodos} from "./DOM_Todos.js";
 
 let formType = 'Add';
 let formCurrentProject = '';
@@ -7,6 +7,7 @@ let formCurrentProject = '';
 function displayProjects() {
   const projectsNav = document.querySelector('.projects-nav');
   projectsNav.innerHTML = '';
+  clearProjectSelect();
 
   getProjects().forEach((project) => {
     const navElement = document.createElement('li');
@@ -84,12 +85,14 @@ function hideProjectForm() {
   document.querySelector('.project-form').style.visibility = 'hidden';
   displayProjects();
   document.querySelector('.cover').style.visibility = 'hidden';
+  displayActiveTodos();
 }
 
 function removeProjectNav(projectName) {
   removeProject(projectName);
   resetTodos(projectName);
-  displayProjects(getProjects());
+  displayProjects(getProjects())
+  displayActiveTodos();
 }
 
 function submitProjectForm() {
@@ -100,6 +103,7 @@ function submitProjectForm() {
   else {
     formCurrentProject.setProjectName(newProjectName);
   }
+  setActiveTab(newProjectName);
   hideProjectForm();
 }
 
