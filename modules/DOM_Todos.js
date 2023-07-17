@@ -43,8 +43,13 @@ function makeIcon(parent, classesToAdd, src, project, todo, eventListener) {
   const icon = document.createElement('img');
   icon.setAttribute('src', src);
   icon.classList.add(...classesToAdd);
-  icon.addEventListener('click', () => {
-    eventListener(project, todo);
+  icon.addEventListener('click', (e) => {
+    if(classesToAdd[1] === 'check') {
+      eventListener(e, todo);
+    }
+    else {
+      eventListener(project, todo);
+    }
   })
   parent.appendChild(icon);
 }
@@ -92,6 +97,11 @@ function hideTodoForm() {
   document.querySelector('.cover').style.visibility = 'hidden';
 }
 
+function checkTodoElement(event, todo) {
+  todo.setIsComplete(!todo.getIsComplete());
+  event.target.src = (todo.getIsComplete()) ? '../icons/check-circle-outline.svg' : '../icons/circle-outline.svg';
+}
+
 function addTodoElement(projectName) {
   formType = 'Add';
   formCurrentProjectName = projectName;
@@ -114,7 +124,8 @@ function displayTodo(todo, project) {
   const todoElement = document.createElement('li');
   todoElement.classList.add('todo');
 
-  makeDiv(todoElement, ['todo-check']);
+  const checkIconSrc = (todo.getIsComplete() === false) ? '../icons/circle-outline.svg' : '../icons/check-circle-outline.svg';
+  makeIcon(todoElement, ['todo-icon', 'check'], checkIconSrc, project, todo, checkTodoElement);
   makeDiv(todoElement, ['todo-title'], todo.getTitle());
   makeDiv(todoElement, ['todo-date'], formatDate(todo.getDueDate()));
   makeIcon(todoElement, ['todo-icon', 'edit'], '../icons/square-edit-outline.svg', project, todo, editTodoElement);
@@ -203,14 +214,11 @@ function updateProjectSelect(project)
 
 function clearProjectSelect() {
   let options = document.querySelector('#todo-project').children;
-  console.log(options);
   for(let i = options.length -1; i > 0; i--) {
     console.log(options[i]);
     options[i].remove();
   }
   options = document.querySelector('#todo-project').children;
-  console.log(options);
-
 }
 
 function removeTodoElement(project, todo) {
