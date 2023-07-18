@@ -1,6 +1,7 @@
 import './style.css';
 import {addProject, getProjects} from "./modules/Projects.js"
 import{displayProjects} from "./modules/DOM_Projects.js"
+import { validateInput } from './modules/FormValidation.js';
 
 addProject('Project 1');
 
@@ -9,5 +10,12 @@ for(let i = 0; i < 10; i++) {
 }
 
 getProjects()[0].addTodo('Clean clean clean', 'dust and vacuum', '2023-07-16', 'High', true, 'Hello there.')
+
+const inputs = document.querySelectorAll('input, select');
+inputs.forEach((input) => {
+  input.addEventListener('input', () => {
+    validateInput(input);
+  })
+});
 
 displayProjects();

@@ -1,5 +1,6 @@
 import {getProjects, addProject, removeProject} from "./Projects.js";
 import { displayProjectTodos, updateProjectSelect, clearProjectSelect, resetTodos, setActiveTab, displayActiveTodos} from "./DOM_Todos.js";
+import {clearFormErrors, isValid } from "./FormValidation.js";
 
 let formType = 'Add';
 let formCurrentProject = '';
@@ -82,6 +83,7 @@ function showProjectForm() {
 }
 
 function hideProjectForm() {
+  clearFormErrors(document.querySelectorAll('.project-form .form-input'));
   document.querySelector('.project-form').style.visibility = 'hidden';
   displayProjects();
   document.querySelector('.cover').style.visibility = 'hidden';
@@ -96,15 +98,17 @@ function removeProjectNav(projectName) {
 }
 
 function submitProjectForm() {
-  const newProjectName = document.querySelector('#project-title').value;
-  if(formType === 'Add') {
-    addProject(newProjectName);
+  if(isValid(document.querySelectorAll('.project-form .form-input'))) {
+    const newProjectName = document.querySelector('#project-title').value;
+    if(formType === 'Add') {
+      addProject(newProjectName);
+    }
+    else {
+      formCurrentProject.setProjectName(newProjectName);
+    }
+    setActiveTab(newProjectName);
+    hideProjectForm();
   }
-  else {
-    formCurrentProject.setProjectName(newProjectName);
-  }
-  setActiveTab(newProjectName);
-  hideProjectForm();
 }
 
 document.querySelector('.project-form .cancel').addEventListener('click', hideProjectForm);

@@ -33,11 +33,12 @@
           </ul>
           <ul class="projects-nav nav">
           </ul>
-          <form action="" method="" class="form project-form">
+          <form action="" method="post" class="form project-form" novalidate>
             <h2 class="form-heading"></h2>
             <div class="form-container">
               <label for="project-title" class="form-label">Project Title</label>
-              <input class="form-input" type="text" id="project-title" name="project-title">
+              <input class="form-input" type="text" id="project-title" name="project-title" required maxlength="18">
+              <span class="form-error" aria-live="polite"></span>
             </div>
             <div class="form-container buttons">
               <button class="form-button cancel" type="button">Cancel</button>
@@ -60,34 +61,39 @@
             </div>
           </div>
         </div>
-        <form action="" method="" class="form todo-form">
+        <form action="" method="" class="form todo-form" novalidate>
           <h2 class="form-heading"></h2>
           <div class="form-container">
             <label for="todo-project" class="form-label">Project</label>
-            <select class="form-input" id="todo-project" name="todo-project">
+            <select class="form-input" id="todo-project" name="todo-project" required>
               <option value="">Select Project</option>
             </select>
+            <span class="form-error" aria-live="polite"></span>
           </div>
           <div class="form-container">
             <label for="todo-title" class="form-label">Title</label>
-            <input class="form-input" type="text" id="todo-title" name="todo-title">
+            <input class="form-input" type="text" id="todo-title" name="todo-title" required>
+            <span class="form-error" aria-live="polite"></span>
           </div>
           <div class="form-container">
             <label for="todo-description" class="form-label">Description</label>
-            <input class="form-input" type="text" id="todo-description" name="todo-description">
+            <input class="form-input" type="text" id="todo-description" name="todo-description" required>
+            <span class="form-error" aria-live="polite"></span>
           </div>
           <div class="form-container">
             <label for="todo-date" class="form-label">Date</label>
-            <input class="form-input" type="date" id="todo-date" name="todo-date">
+            <input class="form-input" type="date" id="todo-date" name="todo-date" required>
+            <span class="form-error" aria-live="polite"></span>
           </div>
           <div class="form-container">
             <label for="todo-priority" class="form-label">Priority</label>
-            <select class="form-input" id="todo-priority" name="todo-priority">
+            <select class="form-input" id="todo-priority" name="todo-priority" required>
               <option value="">Select Priority</option>
               <option value="Low">Low</option>
               <option value="Medium">Medium</option>
               <option value="High">High</option>
             </select>
+            <span class="form-error" aria-live="polite"></span>
           </div>
           <div class="form-container">
             <label for="todo-notes" class="form-label">Notes</label>

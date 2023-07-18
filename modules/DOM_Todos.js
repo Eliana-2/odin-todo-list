@@ -1,4 +1,5 @@
 import {getProject, getProjects} from './Projects.js';
+import {clearFormErrors, isValid} from './FormValidation.js';
 
 const todoList = document.querySelector('.todos-list');
 let formType = 'Add';
@@ -92,6 +93,7 @@ function enableFormSelect() {
 }
 
 function hideTodoForm() {
+  clearFormErrors(document.querySelectorAll('.todo-form select, .todo-form input'));
   document.querySelector('.todo-form').style.visibility = 'hidden';
   displayActiveTodos();
   document.querySelector('.cover').style.visibility = 'hidden';
@@ -217,7 +219,6 @@ function updateProjectSelect(project)
 function clearProjectSelect() {
   let options = document.querySelector('#todo-project').children;
   for(let i = options.length -1; i > 0; i--) {
-    console.log(options[i]);
     options[i].remove();
   }
   options = document.querySelector('#todo-project').children;
@@ -229,7 +230,8 @@ function removeTodoElement(project, todo) {
 }
 
 function submitTodoForm() {
-  const todoParameters = [document.querySelector('#todo-title').value, 
+  if(isValid(document.querySelectorAll('.todo-form select, .todo-form input'))) {
+    const todoParameters = [document.querySelector('#todo-title').value, 
   document.querySelector('#todo-description').value, 
   document.querySelector('#todo-date').value,
   document.querySelector('#todo-priority').value,
@@ -243,6 +245,7 @@ function submitTodoForm() {
     formCurrentTodo.editTodo(...todoParameters);
   }
   hideTodoForm();
+  }
 }
 
 function resetTodos(projectName) {

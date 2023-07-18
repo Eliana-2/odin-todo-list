@@ -214,6 +214,7 @@ ul, ol {
   transform: translate(-50%, -50%);
   visibility: hidden;
   z-index: 999;
+  min-width: 400px;
 }  
 
 .form-heading {
@@ -232,6 +233,12 @@ ul, ol {
 
 .form-input {
   font-size: 1.2rem;
+}
+
+.form-input_error {
+  outline: none;
+  border-color:crimson;
+  border-width: 2px;
 }
 
 .buttons {
@@ -259,6 +266,12 @@ ul, ol {
 
 .form-button:hover {
   opacity: 75%;
+}
+
+.form-error {
+  height: 1rem;
+  font-size: 0.9rem;
+  color: crimson;
 }
 
 .cover {
