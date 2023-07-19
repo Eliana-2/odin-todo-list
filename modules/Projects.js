@@ -1,6 +1,6 @@
 import {ProjectFactory} from "./ProjectFactory.js";
 
-const projects = [ProjectFactory('Default')];
+const projects = [];
 
 function getProjects() {return projects;}
 function getProject(projectName) {

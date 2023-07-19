@@ -1,5 +1,6 @@
 import {getProject, getProjects} from './Projects.js';
 import {clearFormErrors, isValid} from './FormValidation.js';
+import {saveTodos} from './LocalStorage.js';
 
 const todoList = document.querySelector('.todos-list');
 let formType = 'Add';
@@ -227,6 +228,7 @@ function clearProjectSelect() {
 function removeTodoElement(project, todo) {
   project.removeTodo(todo);
   displayActiveTodos();
+  saveTodos();
 }
 
 function submitTodoForm() {
@@ -245,6 +247,7 @@ function submitTodoForm() {
     formCurrentTodo.editTodo(...todoParameters);
   }
   hideTodoForm();
+  saveTodos();
   }
 }
 

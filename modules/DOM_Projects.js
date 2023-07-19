@@ -1,6 +1,7 @@
 import {getProjects, addProject, removeProject} from "./Projects.js";
 import { displayProjectTodos, updateProjectSelect, clearProjectSelect, resetTodos, setActiveTab, displayActiveTodos} from "./DOM_Todos.js";
 import {clearFormErrors, isValid } from "./FormValidation.js";
+import {saveTodos} from './LocalStorage.js';
 
 let formType = 'Add';
 let formCurrentProject = '';
@@ -95,6 +96,7 @@ function removeProjectNav(projectName) {
   resetTodos(projectName);
   displayProjects(getProjects())
   displayActiveTodos();
+  saveTodos();
 }
 
 function submitProjectForm() {
@@ -107,6 +109,7 @@ function submitProjectForm() {
       formCurrentProject.setProjectName(newProjectName);
     }
     setActiveTab(newProjectName);
+    saveTodos();
     hideProjectForm();
   }
 }
