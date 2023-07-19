@@ -11,6 +11,6 @@ inputs.forEach((input) => {
   })
 });
 readTodos();
-setActiveTab('Important');
+setActiveTab('Today');
 displayActiveTodos();
 displayProjects();
