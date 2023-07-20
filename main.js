@@ -3,6 +3,7 @@ import{displayProjects} from "./modules/DOM_Projects.js"
 import {validateInput} from './modules/FormValidation.js';
 import {readTodos} from './modules/LocalStorage.js';
 import {setActiveTab, displayActiveTodos} from './modules/DOM_Todos';
+import {menuListener} from './modules/mobileNav.js';
 
 const inputs = document.querySelectorAll('input, select');
 inputs.forEach((input) => {
@@ -10,6 +11,9 @@ inputs.forEach((input) => {
     validateInput(input);
   })
 });
+
+document.querySelector('.header-icon').addEventListener('click', menuListener);
+
 readTodos();
 setActiveTab('Today');
 displayActiveTodos();

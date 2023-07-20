@@ -20,7 +20,7 @@ ul, ol {
   padding: 2rem;
   box-shadow: inset 0rem -0.03125rem 0.0675rem rgb(42, 42, 43);
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
   align-items: flex-start;
 }
 
@@ -30,7 +30,11 @@ ul, ol {
 
 .header-icon {
   width: 3rem;
-  visibility: hidden;
+  display: none;
+}
+
+.header-icon:hover {
+  opacity: 50%;
 }
 
 .content {
@@ -299,9 +303,6 @@ ul, ol {
   position: fixed;
   width: 100%;
   height: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: rgb(219, 217, 217);
   opacity: 80%;
   visibility: hidden;
@@ -310,9 +311,19 @@ ul, ol {
 
 @media (max-width: 700px) {
   .header-icon {
-    visibility: visible;
+    display: block;
   }
   .sidebar {
     width: 0;
   }
+}
+
+.sidebar_mobile {
+  width: 330px;
+  z-index: 999;
+  position: fixed;
+}
+
+.main_mobile {
+  grid-column: span 2;
 }
