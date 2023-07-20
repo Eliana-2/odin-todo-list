@@ -10,41 +10,44 @@
     <div class="container">
       <div class="header">
         <h1 class="header-heading">To-Do List</h1>
+        <img class="header-icon" src="./icons/menu.svg">
       </div>
       <div class="content">
         <div class="sidebar">
-          <ul class="sidebar-nav nav">
-            <li id='today' class="nav-element">
-              <img class="nav-icon" src="./icons/calendar-today.svg">
-              <div class="nav-text">Today</div>
-            </li>
-            <li id='upcoming' class="nav-element">
-              <img class="nav-icon" src="./icons/calendar-week.svg">
-              <div class="nav-text">Upcoming</div>
-            </li>
-            <li id='important' class="nav-element">
-              <img class="nav-icon" src="./icons/calendar-star.svg">
-              <div class="nav-text">Important</div>
-            </li>
-            <li class="nav-heading">
-              <img class="nav-icon" src="./icons/folder-check-outline.svg">
-              <div class="nav-text">Projects</div>
-            </li>
-          </ul>
-          <ul class="projects-nav nav">
-          </ul>
-          <form action="" method="post" class="form project-form" novalidate>
-            <h2 class="form-heading"></h2>
-            <div class="form-container">
-              <label for="project-title" class="form-label">Project Title</label>
-              <input class="form-input" type="text" id="project-title" name="project-title" required maxlength="18">
-              <span class="form-error" aria-live="polite"></span>
-            </div>
-            <div class="form-container buttons">
-              <button class="form-button cancel" type="button">Cancel</button>
-              <button class="form-button submit" type="button"></button>
-            </div>
-          </form>
+          <div class="sidebar-container">
+            <ul class="sidebar-nav nav">
+              <li id='today' class="nav-element">
+                <img class="nav-icon" src="./icons/calendar-today.svg">
+                <div class="nav-text">Today</div>
+              </li>
+              <li id='upcoming' class="nav-element">
+                <img class="nav-icon" src="./icons/calendar-week.svg">
+                <div class="nav-text">Upcoming</div>
+              </li>
+              <li id='important' class="nav-element">
+                <img class="nav-icon" src="./icons/calendar-star.svg">
+                <div class="nav-text">Important</div>
+              </li>
+              <li class="nav-heading">
+                <img class="nav-icon" src="./icons/folder-check-outline.svg">
+                <div class="nav-text">Projects</div>
+              </li>
+            </ul>
+            <ul class="projects-nav nav">
+            </ul>
+            <form action="" method="post" class="form project-form" novalidate>
+              <h2 class="form-heading"></h2>
+              <div class="form-container">
+                <label for="project-title" class="form-label">Project Title</label>
+                <input class="form-input" type="text" id="project-title" name="project-title" required maxlength="12">
+                <span class="form-error" aria-live="polite"></span>
+              </div>
+              <div class="form-container buttons">
+                <button class="form-button cancel" type="button">Cancel</button>
+                <button class="form-button submit" type="button"></button>
+              </div>
+            </form>
+          </div>
         </div>
         <div class="main">
           <div class="main-container">
@@ -72,7 +75,7 @@
           </div>
           <div class="form-container">
             <label for="todo-title" class="form-label">Title</label>
-            <input class="form-input" type="text" id="todo-title" name="todo-title" required>
+            <input class="form-input" type="text" id="todo-title" name="todo-title" required maxlength="12">
             <span class="form-error" aria-live="polite"></span>
           </div>
           <div class="form-container">

@@ -12,7 +12,6 @@ ul, ol {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  min-width: 820px;
 }
 
 .header {
@@ -20,10 +19,18 @@ ul, ol {
   font-weight: bold;
   padding: 2rem;
   box-shadow: inset 0rem -0.03125rem 0.0675rem rgb(42, 42, 43);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .header-heading {
   font-size: 2.5rem;
+}
+
+.header-icon {
+  width: 3rem;
+  visibility: hidden;
 }
 
 .content {
@@ -34,6 +41,13 @@ ul, ol {
 
 .sidebar {
   background-color: rgb(230, 195, 221);
+  overflow-x: hidden;
+  transition: 0.5s;
+  height: 100%;
+  width: 330px;
+}
+
+.sidebar-container {
   padding: 2rem;
 }
 
@@ -41,6 +55,10 @@ ul, ol {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+}
+
+.sidebar-nav {
+  width: 266px;
 }
 
 .nav-element, .nav-heading {
@@ -67,6 +85,7 @@ ul, ol {
 .projects-nav {
   gap: 0.75rem;
   padding: 1rem;
+  width: 276px;
 }
 
 .projects-nav .nav-text {
@@ -102,7 +121,9 @@ ul, ol {
 }
 
 .main {
-  padding: 2rem
+  padding: 2rem;
+  width: 100%;
+  transition: width 0.5s;
 }
 
 .main-container {
@@ -285,4 +306,13 @@ ul, ol {
   opacity: 80%;
   visibility: hidden;
   z-index: 998;
+}
+
+@media (max-width: 700px) {
+  .header-icon {
+    visibility: visible;
+  }
+  .sidebar {
+    width: 0;
+  }
 }
