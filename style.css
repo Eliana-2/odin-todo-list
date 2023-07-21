@@ -18,7 +18,7 @@ ul, ol {
   background-color: rgb(230, 195, 221);
   font-weight: bold;
   padding: 2rem;
-  box-shadow: inset 0rem -0.03125rem 0.0675rem rgb(42, 42, 43);
+  box-shadow: inset 0px -0.0626rem 0.0625rem black;
   display: flex;
   gap: 1rem;
   align-items: flex-start;
