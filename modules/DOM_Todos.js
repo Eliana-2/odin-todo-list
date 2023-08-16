@@ -41,19 +41,23 @@ function makeDiv(parent, classesToAdd, textContent='') {
   parent.appendChild(div);
 }
 
-function makeIcon(parent, classesToAdd, src, project, todo, eventListener) {
-  const icon = document.createElement('img');
-  icon.setAttribute('src', src);
-  icon.classList.add(...classesToAdd);
-  icon.addEventListener('click', (e) => {
+function makeButton(parent, classesToAdd, src, project, todo, eventListener) {
+  const button = document.createElement('button');
+  button.classList.add('todo-button');
+  button.addEventListener('click', (e) => {
     if(classesToAdd[1] === 'check') {
       eventListener(e, todo);
     }
     else {
       eventListener(project, todo);
     }
-  })
-  parent.appendChild(icon);
+  });
+
+  const icon = document.createElement('img');
+  icon.setAttribute('src', src);
+  icon.classList.add(...classesToAdd);
+  button.appendChild(icon);
+  parent.appendChild(button);
 }
 
 function showTodoForm(todo='') {
@@ -124,17 +128,17 @@ function formatDate(dueDate) {
 }
 
 function displayTodo(todo, project) {
-  const todoElement = document.createElement('li');
+  const todoElement = document.createElement('button');
   todoElement.classList.add('todo');
 
   const checkIconSrc = (todo.getIsComplete() === false) ? '../icons/circle-outline.svg' : '../icons/check-circle-outline.svg';
   const checkIconClass = (todo.getPriority() === 'High') ? 'check_high' :
   (todo.getPriority() === 'Medium') ? 'check_medium' : 'check_low';
-  makeIcon(todoElement, ['todo-icon', 'check', checkIconClass], checkIconSrc, project, todo, checkTodoElement);
+  makeButton(todoElement, ['todo-icon', 'check', checkIconClass], checkIconSrc, project, todo, checkTodoElement);
   makeDiv(todoElement, ['todo-title'], todo.getTitle());
   makeDiv(todoElement, ['todo-date'], formatDate(todo.getDueDate()));
-  makeIcon(todoElement, ['todo-icon', 'edit'], '../icons/square-edit-outline.svg', project, todo, editTodoElement);
-  makeIcon(todoElement, ['todo-icon', 'delete'], '../icons/trash-can-outline.svg', project, todo, removeTodoElement);
+  makeButton(todoElement, ['todo-icon', 'edit'], '../icons/square-edit-outline.svg', project, todo, editTodoElement);
+  makeButton(todoElement, ['todo-icon', 'delete'], '../icons/trash-can-outline.svg', project, todo, removeTodoElement);
 
   todoList.appendChild(todoElement);
 }

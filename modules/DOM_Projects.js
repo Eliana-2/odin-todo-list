@@ -12,7 +12,7 @@ function displayProjects() {
   clearProjectSelect();
 
   getProjects().forEach((project) => {
-    const navElement = document.createElement('li');
+    const navElement = document.createElement('button');
     navElement.classList.add('nav-element');
 
     const navIcon = document.createElement('img');
@@ -24,27 +24,34 @@ function displayProjects() {
     navText.classList.add('nav-text');
     navText.textContent = project.getProjectName();
     navElement.appendChild(navText);
-  
 
-    const editIcon = document.createElement('img');
-    editIcon.setAttribute('src', '../icons/file-edit-outline.svg');
-    editIcon.classList.add('nav-icon', 'edit');
-    editIcon.addEventListener('click', (e) => {
+    const editButton = document.createElement('button');
+    editButton.classList.add('edit-button');
+    editButton.addEventListener('click', (e) => {
       formType = 'Edit';
       formCurrentProject = project;
       showProjectForm();
       e.stopPropagation();
-    })
-    navElement.appendChild(editIcon);
+    });
+
+    const editIcon = document.createElement('img');
+    editIcon.setAttribute('src', '../icons/file-edit-outline.svg');
+    editIcon.classList.add('nav-icon', 'edit');
+    editButton.appendChild(editIcon);
+    navElement.appendChild(editButton);
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('delete-button');
+    deleteButton.addEventListener('click', (e) => {
+      removeProjectNav(project.getProjectName());
+      e.stopPropagation();
+     });
 
     const deleteIcon = document.createElement('img');
     deleteIcon.setAttribute('src', '../icons/trash-can-outline.svg');
     deleteIcon.classList.add('nav-icon', 'delete');
-    deleteIcon.addEventListener('click', (e) => {
-     removeProjectNav(project.getProjectName());
-     e.stopPropagation();
-    })
-    navElement.appendChild(deleteIcon);
+    deleteButton.appendChild(deleteIcon);
+    navElement.appendChild(deleteButton);
 
     navElement.addEventListener('click', () => {
       displayProjectTodos(project);
@@ -53,7 +60,7 @@ function displayProjects() {
     updateProjectSelect(project);
   });
 
-  const addNewProject = document.createElement('li');
+  const addNewProject = document.createElement('button');
   addNewProject.classList.add('nav-element', 'new-project');
 
   const navIcon = document.createElement('img');

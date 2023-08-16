@@ -65,6 +65,18 @@ ul, ol {
   width: 266px;
 }
 
+.nav-element, .todo {
+  font: inherit;
+  background-color: inherit;
+  border: none;
+}
+.add-todo, .edit-button, .delete-button, .todo-button {
+  background-color: inherit;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
 .nav-element, .nav-heading {
   display: flex;
   align-items: center;
@@ -73,7 +85,7 @@ ul, ol {
   padding: 0px 0.5rem;
 }
 
-.nav-element:hover, .nav-element_highlight {
+.nav-element:hover, .nav-element_highlight {     
  background-color:rgb(243, 182, 220);
 }
 
@@ -100,7 +112,7 @@ ul, ol {
   width: 1.4rem;
 }
 
-.projects-nav .edit {
+.projects-nav .edit-button {
   margin-left: auto;
 }
 
