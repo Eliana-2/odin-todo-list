@@ -85,7 +85,18 @@ ul, ol {
   padding: 0px 0.5rem;
 }
 
-.nav-element:hover, .nav-element_highlight {     
+.nav-element:focus, .nav-element:hover,  .add-todo:focus {
+  transform: scale(1.05);
+  background-color:rgb(243, 182, 220);
+  outline: none;
+}
+
+.edit-button:hover, .edit-button:focus, .delete-button:hover, .delete-button:focus, .todo-button:hover, .todo-button:focus {
+  transform: scale(1.2);
+  outline: none;
+}
+
+.nav-element_highlight {     
  background-color:rgb(243, 182, 220);
 }
 
@@ -114,10 +125,6 @@ ul, ol {
 
 .projects-nav .edit-button {
   margin-left: auto;
-}
-
-.edit:hover, .delete:hover, .check:hover {
-  transform: scale(1.1, 1.1);
 }
 
 .check_high {
