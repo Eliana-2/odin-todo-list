@@ -65,7 +65,7 @@ ul, ol {
   width: 266px;
 }
 
-.nav-element, .todo {
+.nav-element {
   font: inherit;
   background-color: inherit;
   border: none;
@@ -202,7 +202,7 @@ ul, ol {
 }
 
 .todo:hover {
-  background-color:rgb(230, 195, 221);
+  background-color:#e6c3dd;
   opacity: 50%;
 }
 
@@ -229,8 +229,7 @@ ul, ol {
 }
 
 .footer {
-  background-color: rgb(179, 225, 240);
-  color: white;
+  background-color: #b3e1f0;
   font-weight: bold;
   text-align: center;
   margin-top: auto;
@@ -308,7 +307,7 @@ ul, ol {
 .form-error {
   height: 1rem;
   font-size: 0.9rem;
-  color: crimson;
+  color: rgb(230, 13, 57);
 }
 
 .cover {

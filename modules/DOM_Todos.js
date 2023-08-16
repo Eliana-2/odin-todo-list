@@ -128,7 +128,7 @@ function formatDate(dueDate) {
 }
 
 function displayTodo(todo, project) {
-  const todoElement = document.createElement('button');
+  const todoElement = document.createElement('li');
   todoElement.classList.add('todo');
 
   const checkIconSrc = (todo.getIsComplete() === false) ? '../icons/circle-outline.svg' : '../icons/check-circle-outline.svg';
