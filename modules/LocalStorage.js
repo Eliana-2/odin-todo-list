@@ -34,7 +34,7 @@ function readTodos() {
       getProjects()[0].addTodo('Clean', 'dust and vacuum', '2023-07-07', 'Medium', false, 'This is a basic note.');
     }
 
-    getProjects()[1].addTodo('Clean clean clean', 'dust and vacuum', '2023-07-16', 'High', true, 'Hello there.')
+    getProjects()[1].addTodo('Clean clean', 'dust and vacuum', '2023-07-16', 'High', true, 'Hello there.')
   }
 }
 
