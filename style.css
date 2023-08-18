@@ -202,9 +202,21 @@ ul, ol {
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  /*border: 1px solid black;*/
   border-radius: 1rem;
   padding: 0.25rem 0.5rem;
+}
+
+.todo_animation {
+  animation: 0.5s slide-todo 1;
+}
+
+@keyframes slide-todo {
+  from {
+    margin-top: 25px;
+  }
+  to {
+    margin-top: 0px;
+  }
 }
 
 .todo:hover {

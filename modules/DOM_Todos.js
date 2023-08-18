@@ -129,7 +129,7 @@ function formatDate(dueDate) {
 
 function displayTodo(todo, project) {
   const todoElement = document.createElement('li');
-  todoElement.classList.add('todo');
+  todoElement.classList.add('todo', 'todo_animation');
 
   const checkIconSrc = (todo.getIsComplete() === false) ? '../icons/circle-outline.svg' : '../icons/check-circle-outline.svg';
   const checkIconClass = (todo.getPriority() === 'High') ? 'check_high' :
