@@ -7,6 +7,7 @@ let formType = 'Add';
 let formCurrentProjectName = '';
 let formCurrentTodo = '';
 let activeTab = '';
+let hasAnimation = true;
 
 function setActiveTab(tabName) {
   activeTab = tabName;
@@ -100,7 +101,9 @@ function enableFormSelect() {
 function hideTodoForm() {
   clearFormErrors(document.querySelectorAll('.todo-form select, .todo-form input'));
   document.querySelector('.todo-form').style.visibility = 'hidden';
+  hasAnimation = false;
   displayActiveTodos();
+  hasAnimation = true;
   document.querySelector('.cover').style.visibility = 'hidden';
 }
 
@@ -129,7 +132,8 @@ function formatDate(dueDate) {
 
 function displayTodo(todo, project) {
   const todoElement = document.createElement('li');
-  todoElement.classList.add('todo', 'todo_animation');
+  todoElement.classList.add('todo');
+  if(hasAnimation) {todoElement.classList.add('todo_animation')};
 
   const checkIconSrc = (todo.getIsComplete() === false) ? '../icons/circle-outline.svg' : '../icons/check-circle-outline.svg';
   const checkIconClass = (todo.getPriority() === 'High') ? 'check_high' :
@@ -231,7 +235,9 @@ function clearProjectSelect() {
 
 function removeTodoElement(project, todo) {
   project.removeTodo(todo);
+  hasAnimation = false;
   displayActiveTodos();
+  hasAnimation = true;
   saveTodos();
 }
 

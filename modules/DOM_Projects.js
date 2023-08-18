@@ -101,7 +101,7 @@ function hideProjectForm() {
 function removeProjectNav(projectName) {
   removeProject(projectName);
   resetTodos(projectName);
-  displayProjects(getProjects())
+  displayProjects(getProjects());
   displayActiveTodos();
   saveTodos();
 }
