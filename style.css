@@ -374,5 +374,5 @@ ul, ol {
 }
 
 .main_mobile {
-  visibility: hidden;
+  display: none;
 }
