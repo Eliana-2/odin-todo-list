@@ -49,6 +49,7 @@ ul, ol {
   transition: 0.5s;
   height: 100%;
   width: 0;
+  visibility: hidden;
 }
 
 .sidebar-container {
@@ -70,7 +71,7 @@ ul, ol {
   background-color: inherit;
   border: none;
 }
-.add-todo, .edit-button, .delete-button, .todo-button {
+.add-todo, .edit-button, .delete-button, .todo-button, .header-button {
   background-color: inherit;
   border: none;
   display: flex;
@@ -85,7 +86,7 @@ ul, ol {
   padding: 0px 0.5rem;
 }
 
-.nav-element:focus, .nav-element:hover,  .add-todo:focus {
+.nav-element:focus, .nav-element:hover,  .add-todo:focus, .header-button:focus {
   transform: scale(1.05);
   background-color:rgb(243, 182, 220);
   outline: none;
@@ -343,6 +344,7 @@ ul, ol {
     display: none;
   }
   .sidebar {
+    visibility: visible;
     width: 300px;
   }
   .form {
@@ -366,6 +368,7 @@ ul, ol {
 }
 
 .sidebar_mobile {
+  visibility: visible;
   width: 300px;
   z-index: 999;
 }

@@ -12,7 +12,7 @@ inputs.forEach((input) => {
   })
 });
 
-document.querySelector('.header-icon').addEventListener('click', menuListener);
+document.querySelector('.header-button').addEventListener('click', menuListener);
 
 readTodos();
 setActiveTab('Today');
