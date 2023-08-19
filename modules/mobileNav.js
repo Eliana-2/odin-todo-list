@@ -7,10 +7,10 @@ function showNav() {
 }
 
 function hidenav() {
-  document.querySelector('.main').classList.remove('main_mobile');
   document.querySelector('.sidebar').classList.remove('sidebar_mobile');
   setTimeout(() => {
     document.querySelector('.cover').style.visibility = 'hidden';
+    document.querySelector('.main').classList.remove('main_mobile');
   }, 499);
 }
 

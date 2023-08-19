@@ -146,7 +146,7 @@ ul, ol {
 .main {
   padding-top: 2rem;
   width: 100%;
-  transition: width 0.5s;
+  /*transition: width 0.5s;*/
 }
 
 .main-container {
@@ -368,9 +368,8 @@ ul, ol {
 .sidebar_mobile {
   width: 300px;
   z-index: 999;
-  position: fixed;
 }
 
 .main_mobile {
-  grid-column: span 2;
+  visibility: hidden;
 }
