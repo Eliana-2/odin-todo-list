@@ -101,9 +101,7 @@ function enableFormSelect() {
 function hideTodoForm() {
   clearFormErrors(document.querySelectorAll('.todo-form select, .todo-form input'));
   document.querySelector('.todo-form').style.visibility = 'hidden';
-  hasAnimation = false;
-  displayActiveTodos();
-  hasAnimation = true;
+  displayActiveTodosNoAnimation();
   document.querySelector('.cover').style.visibility = 'hidden';
 }
 
@@ -216,6 +214,12 @@ function displayActiveTodos() {
   }
 }
 
+function displayActiveTodosNoAnimation() {
+  hasAnimation = false;
+  displayActiveTodos();
+  hasAnimation = true;
+}
+
 function updateProjectSelect(project)
 {
   const projectSelect = document.querySelector('#todo-project');
@@ -235,9 +239,7 @@ function clearProjectSelect() {
 
 function removeTodoElement(project, todo) {
   project.removeTodo(todo);
-  hasAnimation = false;
-  displayActiveTodos();
-  hasAnimation = true;
+  displayActiveTodosNoAnimation();
   saveTodos();
 }
 
@@ -275,4 +277,4 @@ document.querySelector('#today').addEventListener('click', displayTodayTodos);
 document.querySelector('#upcoming').addEventListener('click', displayUpcomingTodos);
 document.querySelector('#important').addEventListener('click', displayImportantTodos);
 
-export {displayProjectTodos, updateProjectSelect, clearProjectSelect, resetTodos, setActiveTab, displayActiveTodos}
+export {displayProjectTodos, updateProjectSelect, clearProjectSelect, resetTodos, setActiveTab, displayActiveTodos, displayActiveTodosNoAnimation}

@@ -1,5 +1,5 @@
 import {getProjects, addProject, removeProject} from "./Projects.js";
-import { displayProjectTodos, updateProjectSelect, clearProjectSelect, resetTodos, setActiveTab, displayActiveTodos} from "./DOM_Todos.js";
+import { displayProjectTodos, updateProjectSelect, clearProjectSelect, resetTodos, setActiveTab, displayActiveTodos, displayActiveTodosNoAnimation} from "./DOM_Todos.js";
 import {clearFormErrors, isValid } from "./FormValidation.js";
 import {saveTodos} from './LocalStorage.js';
 
@@ -95,7 +95,7 @@ function hideProjectForm() {
   document.querySelector('.project-form').style.visibility = 'hidden';
   displayProjects();
   document.querySelector('.cover').style.visibility = 'hidden';
-  displayActiveTodos();
+  displayActiveTodosNoAnimation();
 }
 
 function removeProjectNav(projectName) {
