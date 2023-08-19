@@ -242,13 +242,14 @@ function removeTodoElement(project, todo) {
 }
 
 function submitTodoForm() {
+  let isComplete = (formType === 'Add') ? false : formCurrentTodo.getIsComplete();
   if(isValid(document.querySelectorAll('.todo-form select, .todo-form input'))) {
     const todoParameters = [document.querySelector('#todo-title').value, 
-  document.querySelector('#todo-description').value, 
-  document.querySelector('#todo-date').value,
-  document.querySelector('#todo-priority').value,
-  false,
-  document.querySelector('#todo-notes').value];
+    document.querySelector('#todo-description').value, 
+    document.querySelector('#todo-date').value,
+    document.querySelector('#todo-priority').value,
+    isComplete,
+    document.querySelector('#todo-notes').value];
   if(formType === 'Add') {
     const project = getProject(document.querySelector('#todo-project').value);
     project.addTodo(...todoParameters);
