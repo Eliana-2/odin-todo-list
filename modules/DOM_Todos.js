@@ -11,13 +11,13 @@ let hasAnimation = true;
 
 function setActiveTab(tabName) {
   activeTab = tabName;
-  const navTexts = document.querySelectorAll('.nav-text');
+  const navTexts = document.querySelectorAll('.tab-text');
   navTexts.forEach((navText) => {
     if(navText.textContent === tabName) {
-      navText.parentNode.classList.add('nav-element_highlight');
+      navText.parentNode.classList.add('tab_highlight');
     }
     else {
-      navText.parentNode.classList.remove('nav-element_highlight');
+      navText.parentNode.classList.remove('tab_highlight');
     }
   })
 }

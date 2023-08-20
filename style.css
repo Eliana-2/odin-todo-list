@@ -56,17 +56,17 @@ ul, ol {
   padding: 1rem;
 }
 
-.nav {
+.tabs {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-.sidebar-nav {
+.sidebar-tabs {
   width: 266px;
 }
 
-.nav-element {
+.tab {
   font: inherit;
   background-color: inherit;
   border: none;
@@ -78,7 +78,7 @@ ul, ol {
   align-items: center;
 }
 
-.nav-element, .nav-heading {
+.tab, .tab-heading {
   display: flex;
   align-items: center;
   border-radius: 0.5rem;
@@ -86,7 +86,7 @@ ul, ol {
   padding: 0px 0.5rem;
 }
 
-.nav-element:focus, .nav-element:hover,  .add-todo:focus, .header-button:focus {
+.tab:focus, .tab:hover,  .add-todo:focus, .header-button:focus {
   transform: scale(1.05);
   background-color:rgb(243, 182, 220);
   outline: none;
@@ -97,34 +97,34 @@ ul, ol {
   outline: none;
 }
 
-.nav-element_highlight {     
+.tab_highlight {     
  background-color:rgb(243, 182, 220);
 }
 
-.nav-text {
+.tab-text {
   font-size: 2rem;
   white-space: nowrap;
 }
 
-.nav-icon {
+.tab-icon {
   width: 2rem;
 }
 
-.projects-nav {
+.projects-tabs {
   gap: 0.75rem;
   padding: 1rem;
   width: 276px;
 }
 
-.projects-nav .nav-text {
+.projects-tabs .tab-text {
   font-size: 1.5rem;
 }
 
-.projects-nav .nav-icon {
+.projects-tabs .tab-icon {
   width: 1.4rem;
 }
 
-.projects-nav .edit-button {
+.projects-tabs .edit-button {
   margin-left: auto;
 }
 

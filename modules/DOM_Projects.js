@@ -7,21 +7,21 @@ let formType = 'Add';
 let formCurrentProject = '';
 
 function displayProjects() {
-  const projectsNav = document.querySelector('.projects-nav');
+  const projectsNav = document.querySelector('.projects-tabs');
   projectsNav.innerHTML = '';
   clearProjectSelect();
 
   getProjects().forEach((project) => {
     const navElement = document.createElement('button');
-    navElement.classList.add('nav-element');
+    navElement.classList.add('tab');
 
     const navIcon = document.createElement('img');
     navIcon.setAttribute('src', '../icons/text-box-check-outline.svg');
-    navIcon.classList.add('nav-icon');
+    navIcon.classList.add('tab-icon');
     navElement.appendChild(navIcon);
 
     const navText = document.createElement('div');
-    navText.classList.add('nav-text');
+    navText.classList.add('tab-text');
     navText.textContent = project.getProjectName();
     navElement.appendChild(navText);
 
@@ -36,7 +36,7 @@ function displayProjects() {
 
     const editIcon = document.createElement('img');
     editIcon.setAttribute('src', '../icons/file-edit-outline.svg');
-    editIcon.classList.add('nav-icon', 'edit');
+    editIcon.classList.add('tab-icon', 'edit');
     editButton.appendChild(editIcon);
     navElement.appendChild(editButton);
 
@@ -49,7 +49,7 @@ function displayProjects() {
 
     const deleteIcon = document.createElement('img');
     deleteIcon.setAttribute('src', '../icons/trash-can-outline.svg');
-    deleteIcon.classList.add('nav-icon', 'delete');
+    deleteIcon.classList.add('tab-icon', 'delete');
     deleteButton.appendChild(deleteIcon);
     navElement.appendChild(deleteButton);
 
@@ -61,15 +61,15 @@ function displayProjects() {
   });
 
   const addNewProject = document.createElement('button');
-  addNewProject.classList.add('nav-element', 'new-project');
+  addNewProject.classList.add('tab', 'new-project');
 
   const navIcon = document.createElement('img');
   navIcon.setAttribute('src', '../icons/plus.svg');
-  navIcon.classList.add('nav-icon');
+  navIcon.classList.add('tab-icon');
   addNewProject.appendChild(navIcon);
 
   const navText = document.createElement('div');
-  navText.classList.add('nav-text');
+  navText.classList.add('tab-text');
   navText.textContent = 'Add New Project';
   addNewProject.appendChild(navText);
   
