@@ -3,6 +3,7 @@ let menuIsHidden = true;
 function showNav() {
   document.querySelector('.cover').style.visibility = 'visible';
   document.querySelector('.main').classList.add('main_mobile');
+  document.querySelector('.sidebar').style.position = 'absolute';
   document.querySelector('.sidebar').classList.add('sidebar_mobile');
 }
 
@@ -11,7 +12,8 @@ function hidenav() {
   setTimeout(() => {
     document.querySelector('.cover').style.visibility = 'hidden';
     document.querySelector('.main').classList.remove('main_mobile');
-  }, 499);
+    document.querySelector('.sidebar').style.position ='static';
+  }, 500);
 }
 
 function menuListener() {
