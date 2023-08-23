@@ -268,7 +268,7 @@ ul, ol {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  visibility: hidden;
+  /*visibility: hidden;*/
   z-index: 999;
   min-width: 320px;
 }  
@@ -338,6 +338,11 @@ ul, ol {
   opacity: 80%;
   visibility: hidden;
   z-index: 998;
+}
+
+dialog::backdrop {
+  background-color: rgb(219, 217, 217);
+  opacity: 80%;
 }
 
 @media (min-width: 600px) {
