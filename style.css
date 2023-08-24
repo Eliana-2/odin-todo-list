@@ -6,6 +6,7 @@
 
 :root {
   --main-color: rgb(230, 195, 221);
+  --highlight-color: rgb(243, 182, 220);
 }
 
 ul, ol {
@@ -19,7 +20,7 @@ ul, ol {
 }
 
 .header {
-  background-color: rgb(230, 195, 221);
+  background-color: var(--main-color);
   font-weight: bold;
   padding: 2rem;
   box-shadow: inset 0px -0.0626rem 0.0625rem black;
@@ -49,12 +50,12 @@ ul, ol {
 }
 
 .sidebar {
-  background-color: rgb(230, 195, 221);
+  background-color: var(--main-color);
   overflow-x: hidden;
-  transition: width 0.5s;
   height: 100%;
   width: 0;
   visibility: hidden;
+  z-index: 999;
 }
 
 .sidebar-container {
@@ -93,7 +94,7 @@ ul, ol {
 
 .tab:focus, .tab:hover,  .add-todo:focus, .header-button:focus {
   transform: scale(1.05);
-  background-color:rgb(243, 182, 220);
+  background-color: var(--highlight-color);
   outline: none;
 }
 
@@ -103,7 +104,7 @@ ul, ol {
 }
 
 .tab_highlight {     
- background-color:rgb(243, 182, 220);
+ background-color: var(--highlight-color);
 }
 
 .tab-text {
@@ -152,7 +153,6 @@ ul, ol {
 .main {
   padding-top: 2rem;
   width: 100%;
-  /*transition: width 0.5s;*/
 }
 
 .main-container {
@@ -186,7 +186,7 @@ ul, ol {
   display: flex;
   justify-content: space-around;
   border: 1px solid black;
-  background-color: rgb(230, 195, 221);
+  background-color: var(--main-color);
 }
 
 .todos-heading {
@@ -261,7 +261,7 @@ ul, ol {
 }
 
 .form {
-  background-color: rgb(230, 195, 221);
+  background-color: var(--main-color);
   border: 1px solid black;
   border-radius: 0.125rem;
   position: fixed;
@@ -272,7 +272,6 @@ ul, ol {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /*visibility: hidden;*/
   z-index: 999;
   min-width: 320px;
 }  
@@ -378,9 +377,13 @@ dialog::backdrop {
 }
 
 .sidebar_mobile {
-  visibility: visible;
   width: 300px;
   z-index: 999;
+}
+
+.sidebar_mobile-display {
+  visibility: visible;
+  position: absolute;
 }
 
 .main_mobile {

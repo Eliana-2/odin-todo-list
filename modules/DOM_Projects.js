@@ -86,7 +86,6 @@ function showProjectForm() {
   document.querySelector('.project-form .form-heading').textContent = `${formType} Project`;
   document.querySelector('.project-form .form-input').value = (formType === 'Edit') ? formCurrentProject.getProjectName() : '';
   document.querySelector('.project-form .submit').textContent = `${formType}`;
-  /*document.querySelector('.cover').style.visibility = 'visible'*/
   document.querySelector('.project-dialog').showModal();
 }
 
@@ -94,7 +93,6 @@ function hideProjectForm() {
   clearFormErrors(document.querySelectorAll('.project-form .form-input'));
   document.querySelector('.project-dialog').close();
   displayProjects();
-  /*document.querySelector('.cover').style.visibility = 'hidden';*/
   displayActiveTodosNoAnimation();
 }
 

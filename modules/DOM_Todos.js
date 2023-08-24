@@ -80,7 +80,6 @@ function showTodoForm(todo='') {
   }
   document.querySelector('#todo-project').value = formCurrentProjectName;
   document.querySelector('.todo-form .submit').textContent = `${formType}`;
-  /*document.querySelector('.cover').style.visibility = 'visible';*/
   document.querySelector('.todo-dialog').showModal();
 }
 
@@ -102,7 +101,6 @@ function hideTodoForm() {
   clearFormErrors(document.querySelectorAll('.todo-form select, .todo-form input'));
   document.querySelector('.todo-dialog').close();
   displayActiveTodosNoAnimation();
-  /*document.querySelector('.cover').style.visibility = 'hidden';*/
 }
 
 function checkTodoElement(event, todo) {

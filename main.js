@@ -18,3 +18,7 @@ readTodos();
 setActiveTab('Today');
 displayActiveTodos();
 displayProjects();
+
+window.onload = () => {
+  document.querySelector('.sidebar').style.transition = "0.5s ease-in-out";
+}

@@ -3,8 +3,7 @@ let menuIsHidden = true;
 function showNav() {
   document.querySelector('.cover').style.visibility = 'visible';
   document.querySelector('.main').classList.add('main_mobile');
-  document.querySelector('.sidebar').style.position = 'absolute';
-  document.querySelector('.sidebar').classList.add('sidebar_mobile');
+  document.querySelector('.sidebar').classList.add('sidebar_mobile-display', 'sidebar_mobile');
 }
 
 function hidenav() {
@@ -12,7 +11,7 @@ function hidenav() {
   setTimeout(() => {
     document.querySelector('.cover').style.visibility = 'hidden';
     document.querySelector('.main').classList.remove('main_mobile');
-    document.querySelector('.sidebar').style.position ='static';
+    document.querySelector('.sidebar').classList.remove('sidebar_mobile-display');
   }, 500);
 }
 
