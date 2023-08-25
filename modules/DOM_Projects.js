@@ -6,80 +6,83 @@ import {saveTodos} from './LocalStorage.js';
 let formType = 'Add';
 let formCurrentProject = '';
 
+function makeIcon(src, classes) {
+  const icon = document.createElement('img');
+  icon.setAttribute('src', src);
+  icon.classList.add(...classes);
+  return icon;
+}
+
+function makeTextContainer(classes, text) {
+  const textContainer = document.createElement('div');
+  textContainer.classList.add(...classes);
+  textContainer.textContent = text;
+  return textContainer;
+}
+
+function makeButton(classes, eventListener) {
+  const button = document.createElement('button');
+  button.classList.add(...classes);
+  button.addEventListener('click', (e) => {
+    eventListener();
+    e.stopPropagation();
+  });
+  return button;
+}
+
+function makeIconButton(src, iconClasses, buttonClasses, eventListener) {
+  const button = makeButton(buttonClasses, eventListener);
+  const buttonIcon = makeIcon(src, iconClasses)
+  button.appendChild(buttonIcon);
+  return button;
+}
+
+function showEditProjectForm(project) {
+  formType = 'Edit';
+  formCurrentProject = project;
+  showProjectForm();
+}
+
+function showAddProjectForm() {
+  formType = 'Add';
+  formCurrentProject = '';
+  showProjectForm();
+}
+
 function displayProjects() {
-  const projectsNav = document.querySelector('.projects-tabs');
-  projectsNav.innerHTML = '';
+  const projectsTabs = document.querySelector('.projects-tabs');
+  projectsTabs.innerHTML = '';
   clearProjectSelect();
 
   getProjects().forEach((project) => {
-    const navElement = document.createElement('button');
-    navElement.classList.add('tab');
+    const tab = makeButton(['tab'], () => displayProjectTodos(project));
 
-    const navIcon = document.createElement('img');
-    navIcon.setAttribute('src', '../icons/text-box-check-outline.svg');
-    navIcon.classList.add('tab-icon');
-    navElement.appendChild(navIcon);
+    const tabIcon = makeIcon('../icons/text-box-check-outline.svg', ['tab-icon']);
+    tab.appendChild(tabIcon);
 
-    const navText = document.createElement('div');
-    navText.classList.add('tab-text');
-    navText.textContent = project.getProjectName();
-    navElement.appendChild(navText);
+    const tabText = makeTextContainer(['tab-text'], project.getProjectName());
+    tab.appendChild(tabText);
 
-    const editButton = document.createElement('button');
-    editButton.classList.add('edit-button');
-    editButton.addEventListener('click', (e) => {
-      formType = 'Edit';
-      formCurrentProject = project;
-      showProjectForm();
-      e.stopPropagation();
-    });
+    const editButton = makeIconButton('../icons/file-edit-outline.svg', ['tab-icon', 'edit'], ['edit-button'], () => {showEditProjectForm(project)});
+    tab.appendChild(editButton);
 
-    const editIcon = document.createElement('img');
-    editIcon.setAttribute('src', '../icons/file-edit-outline.svg');
-    editIcon.classList.add('tab-icon', 'edit');
-    editButton.appendChild(editIcon);
-    navElement.appendChild(editButton);
-
-    const deleteButton = document.createElement('button');
-    deleteButton.classList.add('delete-button');
-    deleteButton.addEventListener('click', (e) => {
-      removeProjectNav(project.getProjectName());
-      e.stopPropagation();
-     });
-
-    const deleteIcon = document.createElement('img');
-    deleteIcon.setAttribute('src', '../icons/trash-can-outline.svg');
-    deleteIcon.classList.add('tab-icon', 'delete');
-    deleteButton.appendChild(deleteIcon);
-    navElement.appendChild(deleteButton);
-
-    navElement.addEventListener('click', () => {
-      displayProjectTodos(project);
-    });
-    projectsNav.appendChild(navElement);
+    const deleteButton = makeIconButton('../icons/trash-can-outline.svg', ['tab-icon', 'delete'], ['delete-button'], () => {removeProjectNav(project.getProjectName());});
+    tab.appendChild(deleteButton);
+ 
+    projectsTabs.appendChild(tab);
     updateProjectSelect(project);
   });
 
-  const addNewProject = document.createElement('button');
-  addNewProject.classList.add('tab', 'new-project');
+  const addProjectButton = makeButton(['tab', 'new-project'], showAddProjectForm);
 
-  const navIcon = document.createElement('img');
-  navIcon.setAttribute('src', '../icons/plus.svg');
-  navIcon.classList.add('tab-icon');
-  addNewProject.appendChild(navIcon);
+  const tabIcon = makeIcon('../icons/plus.svg', ['tab-icon']);
+  addProjectButton.appendChild(tabIcon);
 
-  const navText = document.createElement('div');
-  navText.classList.add('tab-text');
-  navText.textContent = 'Add New Project';
-  addNewProject.appendChild(navText);
-  
-  addNewProject.addEventListener('click', (e) => {
-    formType = 'Add';
-    formCurrentProject = '';
-    showProjectForm();
-  });
+  const tabText = makeTextContainer(['tab-text'], 'Add New Project');
+  addProjectButton.appendChild(tabText);
 
-  projectsNav.appendChild(addNewProject);
+
+  projectsTabs.appendChild(addProjectButton);
 }
 
 function showProjectForm() {
