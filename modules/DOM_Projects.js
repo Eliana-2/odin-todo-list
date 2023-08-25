@@ -20,9 +20,10 @@ function makeTextContainer(classes, text) {
   return textContainer;
 }
 
-function makeButton(classes, eventListener) {
+function makeButton(classes, ariaLabel, eventListener) {
   const button = document.createElement('button');
   button.classList.add(...classes);
+  button.ariaLabel = ariaLabel;
   button.addEventListener('click', (e) => {
     eventListener();
     e.stopPropagation();
@@ -30,8 +31,8 @@ function makeButton(classes, eventListener) {
   return button;
 }
 
-function makeIconButton(src, iconClasses, buttonClasses, eventListener) {
-  const button = makeButton(buttonClasses, eventListener);
+function makeIconButton(src, iconClasses, buttonClasses, ariaLabel, eventListener) {
+  const button = makeButton(buttonClasses, ariaLabel, eventListener);
   const buttonIcon = makeIcon(src, iconClasses)
   button.appendChild(buttonIcon);
   return button;
@@ -55,7 +56,7 @@ function displayProjects() {
   clearProjectSelect();
 
   getProjects().forEach((project) => {
-    const tab = makeButton(['tab'], () => displayProjectTodos(project));
+    const tab = makeButton(['tab'], project.getProjectName(), () => displayProjectTodos(project));
 
     const tabIcon = makeIcon('../icons/text-box-check-outline.svg', ['tab-icon']);
     tab.appendChild(tabIcon);
@@ -63,17 +64,17 @@ function displayProjects() {
     const tabText = makeTextContainer(['tab-text'], project.getProjectName());
     tab.appendChild(tabText);
 
-    const editButton = makeIconButton('../icons/file-edit-outline.svg', ['tab-icon', 'edit'], ['edit-button'], () => {showEditProjectForm(project)});
+    const editButton = makeIconButton('../icons/file-edit-outline.svg', ['tab-icon', 'edit'], ['edit-button'], 'Edit project', () => {showEditProjectForm(project);});
     tab.appendChild(editButton);
 
-    const deleteButton = makeIconButton('../icons/trash-can-outline.svg', ['tab-icon', 'delete'], ['delete-button'], () => {removeProjectNav(project.getProjectName());});
+    const deleteButton = makeIconButton('../icons/trash-can-outline.svg', ['tab-icon', 'delete'], ['delete-button'], 'Delete project', () => {deleteProjectTab(project.getProjectName());});
     tab.appendChild(deleteButton);
  
     projectsTabs.appendChild(tab);
     updateProjectSelect(project);
   });
 
-  const addProjectButton = makeButton(['tab', 'new-project'], showAddProjectForm);
+  const addProjectButton = makeButton(['tab', 'new-project'], 'Add new project', showAddProjectForm);
 
   const tabIcon = makeIcon('../icons/plus.svg', ['tab-icon']);
   addProjectButton.appendChild(tabIcon);
@@ -99,7 +100,7 @@ function hideProjectForm() {
   displayActiveTodosNoAnimation();
 }
 
-function removeProjectNav(projectName) {
+function deleteProjectTab(projectName) {
   removeProject(projectName);
   resetTodos(projectName);
   displayProjects(getProjects());
