@@ -1,3 +1,4 @@
+import {makeIcon, makeTextContainer, makeButton, makeIconButton} from "./DOM_Elements.js";
 import {getProjects, addProject, removeProject} from "./Projects.js";
 import { displayProjectTodos, updateProjectSelect, clearProjectSelect, resetTodos, setActiveTab, displayActiveTodos, displayActiveTodosNoAnimation} from "./DOM_Todos.js";
 import {clearFormErrors, isValid } from "./FormValidation.js";
@@ -5,38 +6,6 @@ import {saveTodos} from './LocalStorage.js';
 
 let formType = 'Add';
 let formCurrentProject = '';
-
-function makeIcon(src, classes) {
-  const icon = document.createElement('img');
-  icon.setAttribute('src', src);
-  icon.classList.add(...classes);
-  return icon;
-}
-
-function makeTextContainer(classes, text) {
-  const textContainer = document.createElement('div');
-  textContainer.classList.add(...classes);
-  textContainer.textContent = text;
-  return textContainer;
-}
-
-function makeButton(classes, ariaLabel, eventListener) {
-  const button = document.createElement('button');
-  button.classList.add(...classes);
-  button.ariaLabel = ariaLabel;
-  button.addEventListener('click', (e) => {
-    eventListener();
-    e.stopPropagation();
-  });
-  return button;
-}
-
-function makeIconButton(src, iconClasses, buttonClasses, ariaLabel, eventListener) {
-  const button = makeButton(buttonClasses, ariaLabel, eventListener);
-  const buttonIcon = makeIcon(src, iconClasses)
-  button.appendChild(buttonIcon);
-  return button;
-}
 
 function showEditProjectForm(project) {
   formType = 'Edit';
