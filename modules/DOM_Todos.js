@@ -1,4 +1,4 @@
-import {makeIcon, makeTextContainer, /*makeButton,*/ makeIconButton} from "./DOM_Elements.js";
+import {makeTextContainer, makeIconButton} from "./DOM_Elements.js";
 import {getProject, getProjects} from './Projects.js';
 import {clearFormErrors, isValid} from './FormValidation.js';
 import {saveTodos} from './LocalStorage.js';
@@ -236,15 +236,16 @@ function submitTodoForm() {
     document.querySelector('#todo-priority').value,
     isComplete,
     document.querySelector('#todo-notes').value];
-  if(formType === 'Add') {
-    const project = getProject(document.querySelector('#todo-project').value);
-    project.addTodo(...todoParameters);
-  }
-  else {
-    formCurrentTodo.editTodo(...todoParameters);
-  }
-  hideTodoForm();
-  saveTodos();
+  
+    if(formType === 'Add') {
+      const project = getProject(document.querySelector('#todo-project').value);
+      project.addTodo(...todoParameters);
+    }
+    else {
+      formCurrentTodo.editTodo(...todoParameters);
+    }
+    hideTodoForm();
+    saveTodos();
   }
 }
 

@@ -1,6 +1,7 @@
 function makeIcon(src, classes) {
   const icon = document.createElement('img');
-  icon.setAttribute('src', src);
+  icon.src = src;
+  icon.alt = '';
   icon.classList.add(...classes);
   return icon;
 }
