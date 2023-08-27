@@ -65,8 +65,6 @@ function showProjectForm() {
 function hideProjectForm() {
   clearFormErrors(document.querySelectorAll('.project-form .form-input'));
   document.querySelector('.project-dialog').close();
-  displayProjects();
-  displayActiveTodosNoAnimation();
 }
 
 function deleteProjectTab(projectName) {
@@ -89,6 +87,8 @@ function submitProjectForm() {
     setActiveTab(newProjectName);
     saveTodos();
     hideProjectForm();
+    displayProjects();
+    displayActiveTodosNoAnimation();
   }
 }
 

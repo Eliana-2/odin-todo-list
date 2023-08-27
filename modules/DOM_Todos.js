@@ -75,7 +75,6 @@ function enableFormSelect() {
 function hideTodoForm() {
   clearFormErrors(document.querySelectorAll('.todo-form select, .todo-form input'));
   document.querySelector('.todo-dialog').close();
-  displayActiveTodosNoAnimation();
 }
 
 function checkTodoElement(todo, button) {
@@ -245,6 +244,7 @@ function submitTodoForm() {
       formCurrentTodo.editTodo(...todoParameters);
     }
     hideTodoForm();
+    displayActiveTodosNoAnimation();
     saveTodos();
   }
 }
